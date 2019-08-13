@@ -1,0 +1,42 @@
+<html>
+<head>
+<style>
+.my_e{width:300px;height:250px;background:blue;opacity:0;}
+</style>
+</head>
+<body>
+<div class='my_e'></div>
+<script src="lib.js"></script>
+<script>
+var i=0;
+var colors = ['red','pink','brown','yellow','black'];
+var element = $('.my_e');
+$(function(e){
+	console.log('Page Load');
+});
+element.css({opacity:1})
+.on('click',function(e){
+	//$(e.target).off('click');
+	changeColor(e);
+}).on('mouseover',function(e){
+	changeColor(e);
+}).on('mouseout',function(e){
+	//changeColor(e);
+	element.removeCss('background');
+});
+
+function changeColor(e){
+	console.log('Event',e.type);
+	element.css({background:colors[i]});
+	console.log('color',colors[i]);
+	i++;
+	if(i==colors.length) i=0;
+}
+/*
+element.fadeIn(400,function(){
+	element.fadeOut(400);
+});
+*/
+</script>
+</body>
+</html>
